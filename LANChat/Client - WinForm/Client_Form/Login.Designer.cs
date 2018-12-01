@@ -84,7 +84,7 @@
             this.button1.Location = new System.Drawing.Point(17, 152);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(324, 25);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Подключиться к серверу";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.ConnectToServer);
@@ -94,7 +94,7 @@
             this.name.Location = new System.Drawing.Point(181, 107);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(160, 27);
-            this.name.TabIndex = 6;
+            this.name.TabIndex = 3;
             // 
             // Login
             // 

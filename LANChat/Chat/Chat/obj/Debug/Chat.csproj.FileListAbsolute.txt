@@ -63,3 +63,14 @@ C:\Users\Григорий.user\Desktop\чат\Chat\obj\Debug\Chat.csproj.Generat
 C:\Users\Григорий.user\Desktop\чат\Chat\obj\Debug\Chat.csproj.CoreCompileInputs.cache
 C:\Users\Григорий.user\Desktop\чат\Chat\obj\Debug\Chat.exe
 C:\Users\Григорий.user\Desktop\чат\Chat\obj\Debug\Chat.pdb
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\bin\Debug\Chat.exe.config
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\bin\Debug\Chat.exe
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\bin\Debug\Chat.pdb
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.csprojAssemblyReference.cache
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.ChatClient.resources
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.Server.resources
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.Properties.Resources.resources
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.csproj.GenerateResource.cache
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.csproj.CoreCompileInputs.cache
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.exe
+C:\Users\Григорий.user\Desktop\LANChat\LANChat\Chat\Chat\obj\Debug\Chat.pdb

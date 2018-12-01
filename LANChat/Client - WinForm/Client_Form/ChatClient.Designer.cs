@@ -54,7 +54,7 @@
             this.message.Location = new System.Drawing.Point(12, 312);
             this.message.Multiline = true;
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(189, 28);
+            this.message.Size = new System.Drawing.Size(189, 24);
             this.message.TabIndex = 1;
             this.message.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPressed);
             // 
@@ -62,7 +62,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(207, 312);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 28);
+            this.button1.Size = new System.Drawing.Size(95, 24);
             this.button1.TabIndex = 2;
             this.button1.Text = "Отправить";
             this.button1.UseVisualStyleBackColor = true;
@@ -99,22 +99,22 @@
             // светлаяToolStripMenuItem
             // 
             this.светлаяToolStripMenuItem.Name = "светлаяToolStripMenuItem";
-            this.светлаяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.светлаяToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.светлаяToolStripMenuItem.Text = "Светлая";
             this.светлаяToolStripMenuItem.Click += new System.EventHandler(this.Bright);
             // 
             // темнаяToolStripMenuItem
             // 
             this.темнаяToolStripMenuItem.Name = "темнаяToolStripMenuItem";
-            this.темнаяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.темнаяToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.темнаяToolStripMenuItem.Text = "Темная";
             this.темнаяToolStripMenuItem.Click += new System.EventHandler(this.Dark);
             // 
             // свойстваToolStripMenuItem
             // 
             this.свойстваToolStripMenuItem.Name = "свойстваToolStripMenuItem";
-            this.свойстваToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.свойстваToolStripMenuItem.Text = "Свойства";
+            this.свойстваToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.свойстваToolStripMenuItem.Text = "Справка";
             // 
             // ChatClient
             // 

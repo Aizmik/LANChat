@@ -1,1 +1,1 @@
-Color [DarkGoldenrod]
+Color [DarkSlateGray]

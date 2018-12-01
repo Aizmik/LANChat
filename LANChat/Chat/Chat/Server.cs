@@ -32,7 +32,7 @@ namespace Chat
                 }
                 file.Close();
             }
-            catch { }
+            catch {}
         }
 
 

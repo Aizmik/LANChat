@@ -177,9 +177,13 @@ namespace Chat
                     settextAction();
             }
 
-            System.IO.StreamWriter file = new System.IO.StreamWriter("Color.txt");
-            file.Write(BGColor.ToString());
-            file.Close();
+            try
+            {
+                System.IO.StreamWriter file = new System.IO.StreamWriter("Color.txt");
+                file.Write(BGColor.ToString());
+                file.Close();
+            }
+            catch {}
         }
     }
 }
