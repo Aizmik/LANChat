@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Text;
+using System.Collections;
 using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Net;
@@ -13,8 +14,8 @@ namespace Chat
         private NetworkStream clientStream;
         public delegate void SetTextCallback(string s);
         private Server owner;
-
-        public TcpClient СonnectedClient { get; set; }
+        //public TcpClient СonnectedClient { get; set; }
+        public ArrayList tcpClients = new ArrayList();
 
         #region Constructors
         public ChatClient()
@@ -35,37 +36,12 @@ namespace Chat
             BackColor = color;
             name = name_server;
             owner = parent;
-            //Берем поток
-            СonnectedClient = tcpClient;
-            clientStream = tcpClient.GetStream();
 
-            //Создаем экземпляр класса, чтобы считывать данные по ТСП
-            StateObject state = new StateObject
-            {   workSocket = СonnectedClient.Client     };
-
-            //Вызов ассинхронной функции чтобы получать данные
-            СonnectedClient.Client.BeginReceive(state.buffer, 0,
-                StateObject.BufferSize, 0, new AsyncCallback(OnRecieve), state);
+            AddClients(tcpClient);
 
             richTextBox1.AppendText("Chat Log Here-------->\n");
         }
         #endregion
-
-        private void SetText(string text)
-        {
-            // InvokeRequired сравнивает ID потоков, если они 
-            // одинаковы - возвращает true, иначе - false
-            if (this.richTextBox1.InvokeRequired)
-            {
-                SetTextCallback d = new SetTextCallback(SetText);
-                Invoke(d, new object[] { text });
-            }
-            else
-            {
-                richTextBox1.SelectionColor = Color.Blue;
-                richTextBox1.SelectedText = "\n" + text;
-            }
-        }
 
         #region Send and Recive Data from Scokets
         /// <summary>
@@ -83,7 +59,10 @@ namespace Chat
             byte[] bt;
 
             bt = Encoding.Default.GetBytes(name + ": " + message.Text);
-            СonnectedClient.Client.Send(bt);
+            try
+            { foreach (TcpClient client in tcpClients) client.Client.Send(bt); }
+            catch
+            { MessageBox.Show("Кто-то отвалился(("); }
 
             richTextBox1.SelectionColor = Color.IndianRed;
             richTextBox1.SelectedText = "\n" + name + ": " + message.Text;
@@ -91,9 +70,26 @@ namespace Chat
 
             richTextBox1.ScrollToCaret();
         }
-        
+
+        private void SetText(string text)
+        {
+            // InvokeRequired сравнивает ID потоков, если они 
+            // одинаковы - возвращает true, иначе - false
+            if (richTextBox1.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                Invoke(d, new object[] { text });
+            }
+            else
+            {
+                richTextBox1.SelectionColor = Color.Blue;
+                richTextBox1.SelectedText = "\n" + text;
+            }
+        }
+
+
         /// <summary>
-        /// Асинхронныая Отвечающая функция которая получает данные из Сервера
+        /// Асинхронныая Отвечающая функция которая получает данные
         /// </summary>
         /// <param name="ar"></param>
         public void OnRecieve(IAsyncResult ar)
@@ -115,8 +111,15 @@ namespace Chat
                     {
                         state.sb.Remove(0, state.sb.Length);
 
+                        foreach (TcpClient client in tcpClients)
+                        {
+                            if(handler != client.Client)
+                                client.Client.Send(state.buffer);
+                        }
+
                         state.sb.Append(Encoding.Default.GetString(
                             state.buffer, 0, bytesRead));
+
 
                         content = state.sb.ToString();
                         SetText(content);
@@ -147,13 +150,30 @@ namespace Chat
         }
         #endregion
 
+        public void AddClients(TcpClient client)
+        {
+            tcpClients.Add(client);
+
+            clientStream = client.GetStream();
+
+            //Создаем экземпляр класса, чтобы считывать данные по ТСП
+            StateObject state = new StateObject
+            { workSocket = client.Client };
+
+            //Вызов ассинхронной функции чтобы получать данные
+            client.Client.BeginReceive(state.buffer, 0,
+                StateObject.BufferSize, 0, new AsyncCallback(OnRecieve), state);
+        }
+
+
+
         private void EnterPressed(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 button1.PerformClick();
         }
 
-
+        #region Color
         private void Bright(object sender, EventArgs e)
         {
             ChangeColor(Color.PeachPuff);
@@ -164,7 +184,7 @@ namespace Chat
             ChangeColor(Color.DarkSlateGray);
         }
 
-        private void ChangeColor(Color BGColor)
+        private static void ChangeColor(Color BGColor)
         {
             FormCollection F = Application.OpenForms;
            
@@ -185,5 +205,6 @@ namespace Chat
             }
             catch {}
         }
+        #endregion
     }
 }

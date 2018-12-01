@@ -35,11 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -49,14 +51,14 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.groupBox1.Size = new System.Drawing.Size(169, 206);
+            this.groupBox1.Size = new System.Drawing.Size(169, 222);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сервер";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 151);
+            this.textBox2.Location = new System.Drawing.Point(12, 182);
             this.textBox2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -66,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 123);
+            this.label2.Location = new System.Drawing.Point(8, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 23);
             this.label2.TabIndex = 3;
@@ -74,7 +76,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 94);
+            this.textBox1.Location = new System.Drawing.Point(12, 125);
             this.textBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -84,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 66);
+            this.label1.Location = new System.Drawing.Point(8, 97);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 23);
@@ -107,10 +109,20 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(11, 236);
+            this.label3.Location = new System.Drawing.Point(10, 248);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 18);
             this.label3.TabIndex = 1;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(12, 67);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(134, 27);
+            this.checkBox2.TabIndex = 5;
+            this.checkBox2.Text = "Групповой";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Server
             // 
@@ -141,6 +153,7 @@
         public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

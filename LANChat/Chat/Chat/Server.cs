@@ -45,6 +45,7 @@ namespace Chat
         {
             textBox1.Enabled = false;
             textBox2.Enabled = false;
+            checkBox2.Enabled = false;
             th = new Thread(new ThreadStart(StartListen));
             th.Start();
         }
@@ -95,7 +96,10 @@ namespace Chat
                 // Close all Socket connection
                 foreach (ChatClient c in formArray)
                 {
-                    c.СonnectedClient.Client.Close();
+                    foreach (TcpClient client in c.tcpClients)
+                    {
+                        client.Client.Close();
+                    }
                 }
 
                 // Abort All Running Threads
@@ -114,6 +118,7 @@ namespace Chat
             }
             textBox1.Enabled = true;
             textBox2.Enabled = true;
+            checkBox2.Enabled = true;
         }
 
         /// <summary>
@@ -174,12 +179,18 @@ namespace Chat
             string clRemoteIP = ((IPEndPoint)tcpClient.Client.RemoteEndPoint).Address.ToString();
             string clRemotePort = ((IPEndPoint)tcpClient.Client.RemoteEndPoint).Port.ToString();
 
-            dialog = new ChatClient(this, tcpClient, textBox2.Text, BackColor);
-            dialog.Text = "Подключились к " + clRemoteIP + "на порту " + clRemotePort;
+            if (!checkBox2.Checked || formArray.Count == 0)
+            {
+                dialog = new ChatClient(this, tcpClient, textBox2.Text, BackColor);
+                formArray.Add(dialog);
+                threadArray.Add(Thread.CurrentThread);
+                dialog.ShowDialog();
+            }
+            else
+            {
+                (formArray[0] as ChatClient).AddClients(tcpClient);
+            }
 
-            formArray.Add(dialog);
-            threadArray.Add(Thread.CurrentThread);
-            dialog.ShowDialog();
         }
 
         public void DisconnectClient(string remoteIP, string remotePort)
@@ -187,13 +198,16 @@ namespace Chat
             int count = 0;
             foreach (ChatClient ch in formArray)
             {
-                string remoteIP1 = ((IPEndPoint)ch.СonnectedClient.Client.RemoteEndPoint).Address.ToString();
-                string remotePort1 = ((IPEndPoint)ch.СonnectedClient.Client.RemoteEndPoint).Port.ToString();
+                foreach (TcpClient client in ch.tcpClients)
+                {
+                    string remoteIP1 = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
+                    string remotePort1 = ((IPEndPoint)client.Client.RemoteEndPoint).Port.ToString();
 
-                if (remoteIP1.Equals(remoteIP) && remotePort1.Equals(remotePort))
-                    break;
+                    if (remoteIP1.Equals(remoteIP) && remotePort1.Equals(remotePort))
+                        break;
 
-                count++;
+                    count++;
+                }
             }
             //Closes dialogue
             ChatClient cd = (ChatClient)formArray[count];

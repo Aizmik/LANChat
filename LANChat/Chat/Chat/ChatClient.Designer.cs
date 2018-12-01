@@ -130,7 +130,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "ChatClient";
-            this.Text = "Client";
+            this.Text = "Чат";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPressed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
