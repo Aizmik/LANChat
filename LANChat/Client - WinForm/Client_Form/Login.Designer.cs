@@ -53,6 +53,7 @@
             this.ip.Name = "ip";
             this.ip.Size = new System.Drawing.Size(160, 27);
             this.ip.TabIndex = 1;
+            this.ip.Text = "192.168.0.102";
             // 
             // port
             // 
@@ -60,6 +61,7 @@
             this.port.Name = "port";
             this.port.Size = new System.Drawing.Size(160, 27);
             this.port.TabIndex = 2;
+            this.port.Text = "8000";
             // 
             // label2
             // 
@@ -95,6 +97,7 @@
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(160, 27);
             this.name.TabIndex = 3;
+            this.name.Text = "GRGRGR";
             // 
             // Login
             // 

@@ -36,7 +36,9 @@
             this.изменитьЦветовуюСхемуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.светлаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.темнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отправитьФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.свойстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +84,8 @@
             // менюToolStripMenuItem
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.изменитьЦветовуюСхемуToolStripMenuItem});
+            this.изменитьЦветовуюСхемуToolStripMenuItem,
+            this.отправитьФайлToolStripMenuItem});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.менюToolStripMenuItem.Text = "Меню";
@@ -110,11 +113,22 @@
             this.темнаяToolStripMenuItem.Text = "Темная";
             this.темнаяToolStripMenuItem.Click += new System.EventHandler(this.Dark);
             // 
+            // отправитьФайлToolStripMenuItem
+            // 
+            this.отправитьФайлToolStripMenuItem.Name = "отправитьФайлToolStripMenuItem";
+            this.отправитьФайлToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.отправитьФайлToolStripMenuItem.Text = "Отправить файл";
+            this.отправитьФайлToolStripMenuItem.Click += new System.EventHandler(this.SendFile_Click);
+            // 
             // свойстваToolStripMenuItem
             // 
             this.свойстваToolStripMenuItem.Name = "свойстваToolStripMenuItem";
             this.свойстваToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.свойстваToolStripMenuItem.Text = "Справка";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // ChatClient
             // 
@@ -150,6 +164,8 @@
         private System.Windows.Forms.ToolStripMenuItem светлаяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem темнаяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem свойстваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отправитьФайлToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

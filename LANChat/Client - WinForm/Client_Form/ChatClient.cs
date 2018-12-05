@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Client_Form
 {
@@ -11,8 +12,10 @@ namespace Client_Form
     {
         private TcpClient client;
         private string name;
+        public bool acceptingFile = false;
         public delegate void SetTextCallback(string s);
 
+        #region Debug
 
         #region Constructors
         public ChatClient()
@@ -83,7 +86,28 @@ namespace Client_Form
             message.Text = "";
             richTextBox1.ScrollToCaret();
         }
+        #endregion
+        #endregion
+        private void SendFile_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
 
+            byte[] bt = File.ReadAllBytes(openFileDialog1.FileName);
+            
+            try
+            {
+                client.Client.Send(Encoding.Default.GetBytes("Sf5} " +
+                    openFileDialog1.SafeFileName.Replace(" ", "_") + " " + bt.Length + " " + name));
+                client.Client.Send(bt);
+            }
+            catch
+            { }
+        }
+
+
+        public int fileSize;
+        public string fileName;
+        public string fileSender;
         /// <summary>
         /// Асинхронныая Отвечающая функция которая получает данные из Сервера
         /// </summary>
@@ -103,16 +127,49 @@ namespace Client_Form
                 try
                 {
                     bytesRead = handler.EndReceive(ar);
+
                     if (bytesRead > 0)
                     {
-                        state.sb.Remove(0, state.sb.Length);
+                        if (acceptingFile)
+                        {
+                            MemoryStream file = new MemoryStream();
+                            file.Write(state.buffer, 0, bytesRead);
+                            fileSize -= bytesRead;
+                            do
+                            {
+                                int received = handler.Receive(state.buffer);
+                                file.Write(state.buffer, 0, received);
+                                fileSize -= received;
+                            } while (fileSize > 0);
 
-                        state.sb.Append(Encoding.Default.GetString(
-                            state.buffer, 0, bytesRead));
+                            DialogResult res = MessageBox.Show(fileSender + " хочет переслать вам файл " + fileName, "Файл", MessageBoxButtons.OKCancel);
+                            if (res == DialogResult.OK)
+                            {
+                                File.WriteAllBytes(fileName, file.ToArray());
+                            }
 
-                        content = state.sb.ToString();
-                        SetText(content);
+                            file.Close();
+                            acceptingFile = false;
+                        }
+                        else
+                        {
+                            state.sb.Remove(0, state.sb.Length);
+                            state.sb.Append(Encoding.Default.GetString(
+                                state.buffer, 0, bytesRead));
+                            content = state.sb.ToString();
+                        }
 
+                        if (!content.StartsWith("Sf5}"))
+                            SetText(content);
+                        else
+                        {
+                            SetText("Лови файл!");
+                            string[] names = content.Split(' ');
+                            fileName = names[1];
+                            fileSize = int.Parse(names[2]);
+                            fileSender = names[3];
+                            acceptingFile = true;
+                        }
                         handler.BeginReceive(state.buffer, 0, StateObject.BufferSize,
                             0, new AsyncCallback(OnRecieve), state);
                     }
@@ -136,15 +193,15 @@ namespace Client_Form
                 }
             }
         }
-        #endregion
+        
 
-
+        #region Debugg
         private void EnterPressed(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 button1.PerformClick();
         }
-
+        
         private void ChatClient_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
@@ -154,7 +211,7 @@ namespace Client_Form
             }
             catch {}
         }
-
+                     
         #region Drawing
         private void Bright(object sender, EventArgs e)
         {
@@ -166,7 +223,7 @@ namespace Client_Form
             ChangeColor(Color.DarkSlateGray);
         }
 
-        private void ChangeColor(Color BGColor)
+        static private void ChangeColor(Color BGColor)
         {
             FormCollection F = Application.OpenForms;
 
@@ -181,12 +238,13 @@ namespace Client_Form
 
             try
             {
-                System.IO.StreamWriter file = new System.IO.StreamWriter("Color.txt");
+                StreamWriter file = new StreamWriter("Color.txt");
                 file.Write(BGColor.ToString());
                 file.Close();
             }
             catch {}
         }
+        #endregion
         #endregion
     }
 }

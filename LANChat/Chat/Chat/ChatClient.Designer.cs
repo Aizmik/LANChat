@@ -36,7 +36,9 @@
             this.Color_light = new System.Windows.Forms.ToolStripMenuItem();
             this.светлаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Color_dark = new System.Windows.Forms.ToolStripMenuItem();
+            this.SendindFile = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +84,8 @@
             // менюToolStripMenuItem
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Color_light});
+            this.Color_light,
+            this.SendindFile});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.менюToolStripMenuItem.Text = "Меню";
@@ -110,11 +113,22 @@
             this.Color_dark.Text = "Темная";
             this.Color_dark.Click += new System.EventHandler(this.Dark);
             // 
+            // SendindFile
+            // 
+            this.SendindFile.Name = "SendindFile";
+            this.SendindFile.Size = new System.Drawing.Size(219, 22);
+            this.SendindFile.Text = "Отправить файл";
+            this.SendindFile.Click += new System.EventHandler(this.SendindFile_Click);
+            // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // ChatClient
             // 
@@ -150,5 +164,7 @@
         private System.Windows.Forms.ToolStripMenuItem светлаяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Color_dark;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SendindFile;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

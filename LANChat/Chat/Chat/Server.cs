@@ -81,6 +81,7 @@ namespace Chat
             {
                 Thread t = new Thread(new ParameterizedThreadStart(NewClient));
                 tcpClient = tcpServer.AcceptTcpClient();
+                t.SetApartmentState(ApartmentState.STA);
                 t.Start(tcpClient);
             }
         }
@@ -204,15 +205,17 @@ namespace Chat
                     string remotePort1 = ((IPEndPoint)client.Client.RemoteEndPoint).Port.ToString();
 
                     if (remoteIP1.Equals(remoteIP) && remotePort1.Equals(remotePort))
+                    {
+                        (formArray[count] as ChatClient).RemoveClients(count);
                         break;
-
+                    }
                     count++;
                 }
             }
             //Closes dialogue
             ChatClient cd = (ChatClient)formArray[count];
             formArray.RemoveAt(count);
-
+                       
             ((Thread)(threadArray[count])).Abort();
             threadArray.RemoveAt(count);
         }
