@@ -12,8 +12,8 @@ namespace Client_Form.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -25,12 +25,13 @@ namespace Client_Form.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color Setting1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("PeachPuff")]
+        public global::System.Drawing.Color formColor {
             get {
-                return ((global::System.Drawing.Color)(this["Setting1"]));
+                return ((global::System.Drawing.Color)(this["formColor"]));
             }
             set {
-                this["Setting1"] = value;
+                this["formColor"] = value;
             }
         }
     }

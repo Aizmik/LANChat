@@ -242,12 +242,10 @@ namespace Chat
                 else
                     settextAction();
             }
-
             try
             {
-                System.IO.StreamWriter file = new System.IO.StreamWriter("Color.txt");
-                file.Write(BGColor.ToString());
-                file.Close();
+                Properties.Settings.Default.formColor = BGColor;
+                Properties.Settings.Default.Save();
             }
             catch {}
         }

@@ -82,3 +82,14 @@ C:\Users\Григорий.user\Desktop\LANChat_sharaga\Client - WinForm\Client_F
 C:\Users\Григорий.user\Desktop\LANChat_sharaga\Client - WinForm\Client_Form\obj\Debug\ChatClient.csproj.CoreCompileInputs.cache
 C:\Users\Григорий.user\Desktop\LANChat_sharaga\Client - WinForm\Client_Form\obj\Debug\Client_Form.exe
 C:\Users\Григорий.user\Desktop\LANChat_sharaga\Client - WinForm\Client_Form\obj\Debug\Client_Form.pdb
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\bin\Debug\Client_Form.exe.config
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\bin\Debug\Client_Form.exe
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\bin\Debug\Client_Form.pdb
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\ChatClient.csprojAssemblyReference.cache
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\Client_Form.ChatClient.resources
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\Client_Form.Login.resources
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\Client_Form.Properties.Resources.resources
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\ChatClient.csproj.GenerateResource.cache
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\ChatClient.csproj.CoreCompileInputs.cache
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\Client_Form.exe
+C:\Users\Григорий.user\Desktop\LANChat\Client - WinForm\Client_Form\obj\Debug\Client_Form.pdb

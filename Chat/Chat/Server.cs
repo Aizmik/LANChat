@@ -24,13 +24,7 @@ namespace Chat
 
             try
             {
-                System.IO.StreamReader file = new System.IO.StreamReader("Color.txt");
-
-                if (file.ReadToEnd() == "Color [DarkSlateGray]")
-                {
-                    BackColor = Color.DarkSlateGray;
-                }
-                file.Close();
+                BackColor = Properties.Settings.Default.formColor;
             }
             catch {}
         }

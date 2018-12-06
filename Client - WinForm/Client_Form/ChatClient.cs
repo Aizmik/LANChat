@@ -236,9 +236,8 @@ namespace Client_Form
 
             try
             {
-                StreamWriter file = new StreamWriter("Color.txt");
-                file.Write(BGColor.ToString());
-                file.Close();
+                Properties.Settings.Default.formColor = BGColor;
+                Properties.Settings.Default.Save();
             }
             catch {}
         }
